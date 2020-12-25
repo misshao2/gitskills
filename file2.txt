@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+insert111file1
+=======
+file1
+sec
+
+>>>>>>> main

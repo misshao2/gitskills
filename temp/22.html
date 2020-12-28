@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>品字布局</title>
+</head>
+
+<body>
+    <input type="text" id="user" value="">
+    <span id="show1" style="background:red"></span>
+    <script>
+    var obj = {};
+    var val = "123";
+    Object.defineProperty(obj, 'val', {
+        get: function() {
+            return val;
+        },
+        set: function(newValue) {
+            val = newValue;
+            document.getElementById("user").value = newValue;
+            document.getElementById("show1").innerHTML = newValue;
+            console.log(document.getElementById("show1")); //span先输出
+        }
+    })
+    window.addEventListener("keyup", function(e) {
+        obj.val = e.target.value;
+        console.log(obj.val); //后输出
+    })
+
+    //代理模式
+    var idol = {
+        name: "caixukun",
+        phone: 10086,
+        price: 1000
+    }
+    var agent = new Proxy(idol, {
+        get: function(target, key) { //target指向第一个参数idol
+            return key + "联系方式:" + target.phone;
+        },
+        set: function(target, key, value) {
+            if (key === 'price') {
+                if (target.price < 1000) throw new Error("报价过低");
+                target.price = value;
+            }
+        }
+    })
+    console.log(agent.name);
+    console.log(agent.phone);
+    agent.price = 100;
+    agent.price = 4000;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navside {
+        list-style-type: none;
+        border: 1px solid #eee;
+        width: 400px;
+        height: 300px;
+
+    }
+
+    .side {
+        line-height: 40px;
+    }
+
+    a {
+        text-decoration: none;
+        display: block;
+
+    }
+
+    li {
+        padding: 0 20px 0 10px;
+    }
+
+    li:hover {
+        background-color: red;
+        display: none;
+
+    }
+
+    .name span {
+        margin-right: 5px;
+    }
+
+    i {
+        float: right;
+
+    }
+    </style>
+</head>
+<ul class="navside">
+    <li class="side">
+        <a href="" class="name">
+            <span>手机</span>
+            <span>电话卡</span>
+            <i>&gt</i>
+        </a>
+    </li>
+    <li class="side">
+        <a href="" class="name">
+            <span>手机</span>
+            <span>电话卡</span>
+            <i>&gt</i>
+        </a>
+    </li>
+    <li class="side">
+        <a href="" class="name">
+            <span>手机</span>
+            <span>电话卡</span>
+            <i>&gt</i>
+        </a>
+    </li>
+</ul>
+
+<body>
+    <script>
+    // var a = { name: "aaa" };
+    var a = function(name) { this.name = name; };
+    var b = 2,
+        c = 3;
+    myNew(a, b, c);
+
+    function myNew() {
+        console.log(arguments);
+        let args = [].slice.call(arguments).slice(1);
+        console.log(args);
+        let fn = [].shift.call(arguments);
+        console.log(fn);
+        console.log(fn.prototype);
+        console.log(arguments);
+        args = [].slice.call(arguments).slice();
+        console.log(args);
+        //等同于Array.prototype.slice.call(arguments)，把类数组对象转化为数组,除了第一个参数其余保留
+        let obj = Object.create(fn.prototype);
+        console.log(obj);
+        let result = fn.apply(obj, args);
+        return Object.prototype.toString.call(result) === '[object Object]' ? result : obj;
+    }
+    </script>
+</body>
+
+</html>

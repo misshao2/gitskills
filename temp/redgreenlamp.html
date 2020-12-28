@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+	/*
+	function sleep(wait){
+		return new Promise(resolve=>{
+			setTimeout(()=>{
+				resolve();
+			},wait)
+		})
+	}
+	async function test(){
+		for(var i=0;i<5;i++){
+			console.log(i);
+			await sleep(1000);
+		}
+	}
+	test();
+	function clg(str){
+		return console.log("%s","提示："+str)
+	}
+	*/
+
+	//红灯亮2秒，黄灯亮1s，绿灯亮3s
+	function green(){
+		console.log("lv");
+	}
+	function red(){
+		console.log("hong");
+	}
+	function yellow(){
+		console.log("huang");
+	}
+	function lamp(color,wait){
+		return  new Promise(resolve=>{
+			color();
+		setTimeout(()=>{
+			//color();
+			resolve();
+		},wait)
+		})
+	}
+	async function step(){
+		await lamp(green,3000);
+		await lamp(red,2000);
+		await lamp(yellow,1000);
+	
+	}
+step();
+  </script>
+ </body>
+</html>
